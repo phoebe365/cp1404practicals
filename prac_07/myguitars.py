@@ -1,4 +1,4 @@
-from prac_06.guitar import Guitar
+from prac_07.guitar import Guitar
 guitars = []
 
 with open("guitars.csv", "r") as in_file:
@@ -18,3 +18,10 @@ while guitar_name != "":
     guitar_name = input("Guitar Name: ").title()
 
 guitars.sort()
+
+for guitar in guitars:
+    print(guitar)
+
+with open("guitars.csv", "w") as out_file:
+    for guitar in guitars:
+        print(",".join([guitar.name, str(guitar.year), str(guitar.cost)]), file=out_file)
