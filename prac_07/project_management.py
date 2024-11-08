@@ -1,4 +1,4 @@
-""" Time estimate: 45 mins"""
+""" Time estimate: 1.5hrs"""
 
 from prac_07.project import Project
 from datetime import datetime
@@ -35,7 +35,7 @@ def main():
             print("invalid choice")
         print(MENU)
         choice = input(">>>").lower()
-    print("Thank you for using custom-built project management software.")
+    print("Thank you.")
     save_projects(projects, FILENAME)
 
 def load_projects(filename):
@@ -53,11 +53,30 @@ def load_projects(filename):
 
 
 def display_projects(projects):
-    completed_projects = [project for project in projects if project.completion_percentage == 100]
-    print(completed_projects)
+    completed_projects = sorted([project for project in projects if project.completion_percentage == 100])
+    incomplete_projects = sorted([project for project in projects if project.completion_percentage < 100])
+
+
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(f"  {project}")
+
+    print("Completed projects:")
+    for project in completed_projects:
+        print(f"  {project}")
 
 def add_new_project(projects):
-    pass
+    """Add a new project to the list through user input."""
+    print("To add a new project input the following details:")
+    name = input("Name: ").title()
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion = int(input("Completion percentage: "))
+    project = Project(name, start_date, priority, cost_estimate, completion)
+    projects.append(project)
+
+
 def update_project(projects):
 
     pass
