@@ -9,3 +9,12 @@ with open("guitars.csv", "r") as in_file:
         guitar = Guitar(parts[0], year, cost)
         guitars.append(guitar)
 
+guitar_name = input("Guitar Name: ").title()
+while guitar_name != "":
+    guitar_year = int(input("Guitar Year: "))
+    guitar_cost = float(input("Guitar Cost: "))
+    guitar = Guitar(guitar_name, guitar_year, guitar_cost)
+    guitars.append(guitar)
+    guitar_name = input("Guitar Name: ").title()
+
+guitars.sort()
